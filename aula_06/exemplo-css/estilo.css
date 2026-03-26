@@ -1,0 +1,185 @@
+/* SELETORES E PROPRIEDADES ESSENCIAIS */
+body { 
+    font-family: sans-serif; 
+    line-height: 1.6;
+    padding: 20px;
+    background-image: url(background.jpg);
+    background-size: cover; /* Garante que a imagem cubra todo o fundo */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    background-attachment: fixed; /* Opcional: mantém o fundo fixo ao rolar a página */
+}
+section { 
+    border: 2px dashed #ccc; 
+    margin-bottom: 40px; 
+    padding: 20px; 
+}
+h2 { 
+    border-bottom: 2px solid var(--primary-color); 
+}
+.seletor-basico { /* Classe */
+    color: var(--primary-color); 
+}
+#seletor-id { /* ID */
+    background-color: #f1f1f1; 
+}
+p[data-tipo="avancado"] { /* Seletor de Atributo */
+    color: darkorange; 
+}
+section > p {  /* Combinador descendente direto */
+    font-weight: bold; 
+    font-style: italic; 
+    text-decoration: line-through;
+    text-transform: uppercase;
+}
+#seletor-id:hover { /* pseudo-classe */
+    color: #f1f1f1;
+    background-color: #1f1f1f;
+}
+p::before { /* antes do conteúdo */
+    content: "→ ";
+}
+/* BOX MODEL */
+.box-model-demo {
+    width: 200px;
+    padding: 20px;
+    border: 10px solid var(--dark-bg);
+    margin: 30px;
+    box-sizing: border-box;
+}
+/* FLEXBOX */
+.flex-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #eee;
+    margin-bottom: 10px;
+}
+.flex-justify-space-around {
+    justify-content: space-around;
+}
+.flex-justify-center {
+    justify-content: center;
+}
+.flex-justify-end {
+    justify-content: end;
+}
+.flex-justify-space-between {
+    justify-content: space-between;
+}
+.flex-justify-space-evenly {
+    justify-content: space-evenly;
+}
+.flex-justify-space-between {
+    justify-content: space-between;
+}
+.flex-item { 
+    background: var(--secondary-color);
+    padding: 10px; 
+    color: white; 
+}
+/* GRID */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto 200px;
+    grid-gap: 10px;
+}
+.grid-item { 
+    background: var(--primary-color);
+    color: white; 
+    padding: 20px; 
+    text-align: center; 
+}
+/* POSICIONAMENTO */
+.pos-relative { 
+    position: relative; 
+    background: #ddd; 
+    height: 100px; 
+}
+.pos-absolute { 
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    background: red; 
+    color: white; 
+}
+.pos-sticky { 
+    position: sticky; 
+    top: 0; 
+    padding: 5px; 
+    z-index: 100; 
+    background: linear-gradient(90deg, yellow, red); 
+}
+.pos-fixed { 
+    position: fixed; 
+    left: 0; 
+    bottom: 0; 
+    width: 100%; 
+    background: radial-gradient(circle, black 0%, gray 100%); 
+    color: white; 
+}
+/* OVERFLOW E VISIBILIDADE */
+.overflow { 
+    width: 150px; 
+    height: 50px; 
+    border: 1px solid black; 
+    margin-bottom: 10px; 
+}
+.overflow-auto { 
+    overflow: auto; 
+}
+.overflow-scroll { 
+    overflow: scroll; 
+}
+.overflow-hidden { 
+    overflow: hidden; 
+}
+.overflow-hidden-ellipsis { 
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+}
+.invisible { /* Ocupa espaço, mas não aparece */
+    visibility: 
+    hidden; 
+}
+.display-none { 
+    display: none;
+    }
+.opacity { /* Fica invisível, porém, pode interagir */
+    opacity: 0;
+    }
+    /* SHADOW, TRANSFORM E TRANSITION */
+.card-efeito {
+    width: 150px; 
+    height: 100px; 
+    background: white; 
+    border: 1px solid #ccc;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+.card-efeito:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 10px 10px 25px rgba(0,0,0,0.3);
+}
+/* MEDIA QUERIES */
+@media (max-width: 600px) {
+    .grid-container { 
+        grid-template-columns: 1fr; 
+    }
+    .flex-container { 
+        flex-direction: column; 
+    }
+    body { 
+        background-color: #f9f9f9; 
+    }
+}
+
+/* VARIÁVEIS (Custom Properties) */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --dark-bg: #2c3e50;
+    --transition-speed: 0.3s;
+}
