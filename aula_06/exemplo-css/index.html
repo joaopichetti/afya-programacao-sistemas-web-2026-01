@@ -71,6 +71,19 @@
             padding: 10px; 
             color: white; 
         }
+        /* GRID */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto 200px;
+            grid-gap: 10px;
+        }
+        .grid-item { 
+            background: #3498db;
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+        }
     </style>
 </head>
 <body>
@@ -129,11 +142,11 @@
 
     <section id="grid">
         <h2>4. Grid Layout</h2>
-        <div>
-            <div>A</div>
-            <div>B</div>
-            <div>C</div>
-            <div>D</div>
+        <div class="grid-container">
+            <div class="grid-item">A</div>
+            <div class="grid-item">B</div>
+            <div class="grid-item">C</div>
+            <div class="grid-item">D</div>
         </div>
     </section>
 
