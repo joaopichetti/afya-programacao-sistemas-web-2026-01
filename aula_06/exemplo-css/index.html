@@ -32,6 +32,14 @@
         p::before { /* antes do conteúdo */
             content: "→ ";
         }
+        /* BOX MODEL */
+        .box-model-demo {
+            width: 200px;
+            padding: 20px;
+            border: 10px solid #2c3e50;
+            margin: 30px;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
@@ -46,7 +54,7 @@
 
     <section id="box-model">
         <h2>2. Box Model</h2>
-        <div>Conteúdo, Padding, Borda e Margem.</div>
+        <div class="box-model-demo">Conteúdo, Padding, Borda e Margem.</div>
     </section>
 
     <section id="flexbox">
