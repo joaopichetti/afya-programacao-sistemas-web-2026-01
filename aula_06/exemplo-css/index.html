@@ -112,6 +112,37 @@
             background: radial-gradient(circle, black 0%, gray 100%); 
             color: white; 
         }
+        /* OVERFLOW E VISIBILIDADE */
+        .overflow { 
+            width: 150px; 
+            height: 50px; 
+            border: 1px solid black; 
+            margin-bottom: 10px; 
+        }
+        .overflow-auto { 
+            overflow: auto; 
+        }
+        .overflow-scroll { 
+            overflow: scroll; 
+        }
+        .overflow-hidden { 
+            overflow: hidden; 
+        }
+        .overflow-hidden-ellipsis { 
+            overflow: hidden; 
+            white-space: nowrap; 
+            text-overflow: ellipsis; 
+        }
+        .invisible { /* Ocupa espaço, mas não aparece */
+            visibility: 
+            hidden; 
+        }
+        .display-none { 
+            display: none;
+         }
+        .opacity { /* Fica invisível, porém, pode interagir */
+            opacity: 0;
+         }
     </style>
 </head>
 <body>
@@ -188,18 +219,18 @@
 
     <section id="visibilidade">
         <h2>6. Overflow e Visibilidade</h2>
-        <div>Este texto é muito longo para o tamanho da caixa e deve ficar para fora da caixa.</div>
+        <div class="overflow">Este texto é muito longo para o tamanho da caixa e deve ficar para fora da caixa.</div>
         <br><br><br>
-        <div>Este texto é muito longo para o tamanho da caixa e deve gerar uma barra de rolagem automaticamente.</div>
-        <div>Este texto é muito longo para o tamanho da caixa e deve ser exibida apenas a parte que couber na caixa.</div>
-        <div>Este texto é muito longo para o tamanho da caixa e deve exibir reticências antes de quebrar o conteúdo</div>
-        <div>Teste</div>
+        <div class="overflow overflow-scroll">Este texto é muito longo para o tamanho da caixa e deve gerar uma barra de rolagem automaticamente.</div>
+        <div class="overflow overflow-hidden">Este texto é muito longo para o tamanho da caixa e deve ser exibida apenas a parte que couber na caixa.</div>
+        <div class="overflow overflow-hidden-ellipsis">Este texto é muito longo para o tamanho da caixa e deve exibir reticências antes de quebrar o conteúdo</div>
+        <div class="overflow overflow-scroll">Teste</div>
         <hr>
-        <p>Display None (sumiu)</p>
+        <p class="display-none">Display None (sumiu)</p>
         <hr>
-        <button onclick="alert('Surpresa!')">Invisível (espaço guardado)</button>
+        <button class="invisible" onclick="alert('Surpresa!')">Invisível (espaço guardado)</button>
         <hr>
-        <button onclick="alert('Surpresa!')">Invisível, porém, pode interagir</button>
+        <button class="opacity" onclick="alert('Surpresa!')">Invisível, porém, pode interagir</button>
     </section>
 
     <section id="transition">
