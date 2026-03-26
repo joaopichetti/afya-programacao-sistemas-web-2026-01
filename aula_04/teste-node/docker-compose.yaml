@@ -1,0 +1,59 @@
+version: '3.9'
+
+services:
+  # Serviço 1: Aplicação Node.js
+  app:
+    build: .			# Build a partir do Dockerfile local
+    container_name: meu-app
+    ports:
+      - "3000:3000"		# Mapear porta
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    volumes:
+      - .:/app			# Sincronizar código local com container
+    command: npm start		# Comando ao iniciar
+    depends_on:
+      - db				# Aguardar db iniciar
+    networks:
+      - app-network		# Conectar à rede
+  # Serviço 2: Banco de dados PostgreSQL
+  db:
+    image: postgres:18				# Imagem pronta do Docker Hub
+    container_name: meu-db
+    environment:
+      - POSTGRES_USER=usuario
+      - POSTGRES_PASSWORD=senha
+      - POSTGRES_DB=meu_banco
+    volumes:
+      - db-data:/var/lib/postgresql	# Persistir dados
+    networks:
+      - app-network
+    ports:
+      - "5432:5432"				# Expor porta do PostgreSQL
+  # Serviço 3: pgAdmin para acesso ao banco
+  pgadmin:
+    image: dpage/pgadmin4:9.8			# Imagem pronta do Docker Hub
+    container_name: pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@example.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+      - PGADMIN_CONFIG_SERVER_MODE=False
+      - PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED=False
+    ports:
+      - "5050:80"						# Expor porta HTTP padrão
+    depends_on:
+      - db
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin		# Persistir dados
+    networks:
+      - app-network
+# Definir volumes nomeados
+volumes:
+  db-data:
+  pgadmin_data:
+
+# Definir rede customizada
+networks:
+  app-network:
+    driver: bridge
