@@ -143,6 +143,19 @@
         .opacity { /* Fica invisível, porém, pode interagir */
             opacity: 0;
          }
+         /* SHADOW, TRANSFORM E TRANSITION */
+        .card-efeito {
+            width: 150px; 
+            height: 100px; 
+            background: white; 
+            border: 1px solid #ccc;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+            transition: transform var(0.3s), box-shadow var(0.3s);
+        }
+        .card-efeito:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 10px 10px 25px rgba(0,0,0,0.3);
+        }
     </style>
 </head>
 <body>
@@ -235,7 +248,7 @@
 
     <section id="transition">
         <h2>7. Shadow, Transform e Transition</h2>
-        <div>Passe o mouse (Hover)</div>
+        <div class="card-efeito">Passe o mouse (Hover)</div>
     </section>
 
     <footer class="pos-fixed">📌 Footer Fixed - Sempre fixo</header>
