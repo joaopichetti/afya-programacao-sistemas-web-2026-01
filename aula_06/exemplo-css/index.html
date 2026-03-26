@@ -84,10 +84,38 @@
             padding: 20px; 
             text-align: center; 
         }
+        /* POSICIONAMENTO */
+        .pos-relative { 
+            position: relative; 
+            background: #ddd; 
+            height: 100px; 
+        }
+        .pos-absolute { 
+            position: absolute; 
+            top: 10px; 
+            right: 10px; 
+            background: red; 
+            color: white; 
+        }
+        .pos-sticky { 
+            position: sticky; 
+            top: 0; 
+            padding: 5px; 
+            z-index: 100; 
+            background: linear-gradient(90deg, yellow, red); 
+        }
+        .pos-fixed { 
+            position: fixed; 
+            left: 0; 
+            bottom: 0; 
+            width: 100%; 
+            background: radial-gradient(circle, black 0%, gray 100%); 
+            color: white; 
+        }
     </style>
 </head>
 <body>
-    <header>📌 Menu Sticky - Role para ver o efeito</header>
+    <header class="pos-sticky">📌 Menu Sticky - Role para ver o efeito</header>
 
     <section id="seletores">
         <h2>1. Seletores e Propriedades Essenciais</h2>
@@ -152,9 +180,9 @@
 
     <section id="posicionamento">
         <h2>5. Posicionamento</h2>
-        <div>
+        <div class="pos-relative">
             Sou Relativo
-            <div>Sou Absoluto</div>
+            <div class="pos-absolute">Sou Absoluto</div>
         </div>
     </section>
 
@@ -179,6 +207,6 @@
         <div>Passe o mouse (Hover)</div>
     </section>
 
-    <footer>📌 Footer Fixed - Sempre fixo</header>
+    <footer class="pos-fixed">📌 Footer Fixed - Sempre fixo</header>
 </body>
 </html>
