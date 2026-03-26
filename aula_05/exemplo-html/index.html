@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- ===== HEAD - METADADOS ===== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demonstração completa de todos os elementos HTML5">
+  <meta name="keywords" content="HTML5, demonstração, tutorial">
+  <meta name="author" content="João Guilherme">
+  <title>Demonstração Completa - Todos os Elementos HTML5</title>
+  
+  <!-- Links para CSS/ícones futuros -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+  <!-- ===== BODY INICIA ===== -->
+
+  <!-- ===== HIERARQUIA DE HEADINGS ===== -->
+  <h1>Elemento H1 - Título Principal (apenas 1 por página)</h1>
+  <h2>Elemento H2 - Seção Principal</h2>
+  <h3>Elemento H3 - Subseção</h3>
+  <h4>Elemento H4 - Subsubseção</h4>
+  <h5>Elemento H5 - Subsubsubseção</h5>
+  <h6>Elemento H6 - Subsubsubsubseção (menor possível)</h6>
+
+  <!-- ===== PARÁGRAFOS E ÊNFASES ===== -->
+  <p>
+    Este é um <strong>texto em negrito com &lt;strong&gt;</strong> (importância semântica).
+    Este é um <em>texto em itálico com &lt;em&gt;</em> (ênfase).
+  </p>
+
+  <!-- ===== QUEBRA DE LINHA E DIVISÓRIA ===== -->
+  <p>Linha 1<br>Linha 2 (quebra com &lt;br&gt;)</p>
+  <hr>Divisória horizontal com &lt;hr&gt;<hr>
+
+  <!-- ===== LISTAS ===== -->
+  <h2>Listas</h2>
+  
+  <h3>Lista não ordenada &lt;ul&gt;</h3>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <h3>Lista ordenada &lt;ol&gt;</h3>
+  <ol>
+    <li>Primeiro</li>
+    <li>Segundo</li>
+    <li>Terceiro</li>
+  </ol>
+
+  <!-- ===== HIPERLINKS &lt;a&gt; - Todas as variações ===== -->
+  <h2>Links &lt;a&gt;</h2>
+  
+  <p>
+    <a href="https://google.com" target="_blank" rel="noopener noreferrer">Link externo (nova aba)</a><br>
+    <a href="/outra-pagina.html">Link interno (mesmo site)</a><br>
+    <a href="#imagens">Link para seção (âncora)</a><br>
+    <a href="mailto:contato@email.com">Link email (mailto:)</a><br>
+    <a href="tel:+5511999999999">Link telefone (tel:)</a><br>
+  </p>
+
+  <!-- ===== IMAGENS ===== -->
+  <h2 id="imagens">Imagens</h2>
+  
+  <h3>Imagem simples &lt;img&gt; - Mesmo site</h3>
+  <img src="imagens/imagem-simples.jpg" alt="Descrição da imagem " width="200" height="300" loading="lazy">
+
+  <h3>Imagem simples &lt;img&gt; - Remoto</h3>
+  <img src="https://picsum.photos/200/300?random=1" alt="Descrição da imagem " width="200" height="300" loading="lazy">
+
+  <h3>Imagem responsiva &lt;picture&gt;</h3>
+  <picture>
+    <source srcset="imagens/imagem-mobile.jpg" media="(max-width: 600px)">
+    <source srcset="imagens/imagem-desktop.jpg" media="(min-width: 601px)">
+    <img src="imagens/imagem-padrao.jpg" alt="Imagem responsiva" width="200" height="300">
+  </picture>
+
+  <!-- ===== ÁUDIO E VÍDEO ===== -->
+  <h2>Mídia</h2>
+  
+  <h3>Áudio &lt;audio&gt;</h3>
+  <audio controls>
+    <source src="audios/audio.mp3" type="audio/mpeg">
+    <source src="audios/audio.ogg" type="audio/ogg">
+    <source src="audios/audio.wav" type="audio/wav">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <h3>Vídeo &lt;video&gt;</h3>
+  <video width="428" height="240" controls poster="videos/poster.jpg">
+    <source src="videos/video.mp4" type="video/mp4">
+    <source src="videos/video.ogg" type="video/ogg">
+    <source src="videos/video.webm" type="video/webm">
+    Seu navegador não suporta vídeo.
+  </video>
+
+  <!-- ===== IFRAME ===== -->
+  <h2>Iframe &lt;iframe&gt; - Youtube</h2>
+  <iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/YE7VzlLtp-4?si=7bcR-PhvHssSQUZF" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen>
+  </iframe>
+  
+  <h2>Iframe &lt;iframe&gt; - Google Maps</h2>
+  <iframe 
+    src="https://www.google.com/maps/embed" 
+    width="400" 
+    height="300" 
+    title="Mapa do local"
+    allowfullscreen
+    loading="lazy">
+  </iframe>
+
+  <!-- ===== TABELA COMPLETA ===== -->
+  <h2>Tabela Completa &lt;table&gt;</h2>
+  <table>
+    <caption>Exemplo de tabela com todos os elementos</caption>
+    
+    <thead>
+      <tr>
+        <th scope="col" id="th-produto">Produto</th>
+        <th scope="colgroup" id="th-preco" colspan="2">Preço</th>
+      </tr>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col" id="th-unidade">Unidade</th>
+        <th scope="col" id="th-pacote">Pacote</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+        <th scope="row" id="produto-1">Notebook</th>
+        <td headers="produto-1 th-preco th-unidade">R$ 2.500</td>
+        <td headers="produto-1 th-preco th-pacote">R$ 2.400</td>
+      </tr>
+      <tr>
+        <th scope="row" id="produto-2" rowspan="2">Mouse</th>
+        <td headers="produto-2 th-preco th-unidade">R$ 80</td>
+        <td headers="produto-2 th-preco th-pacote">R$ 70</td>
+      </tr>
+      <tr>
+        <td colspan="2">Mouse sem fio (exemplo de colspan)</td>
+      </tr>
+    </tbody>
+    
+    <tfoot>
+      <tr>
+        <th scope="row">Total</th>
+        <td colspan="2">R$ 5.550</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- ===== FORMULÁRIO COMPLETO ===== -->
+  <h2>Formulário Completo &lt;form&gt;</h2>
+  <form action="/enviar-dados" method="POST">
+    
+    <!-- Fieldset principal -->
+    <fieldset>
+      <legend>Dados Pessoais</legend>
+      
+      <!-- Todos os tipos de input -->
+      <div>
+        <label for="nome">Nome:</label>
+        <input id="nome" type="text" name="nome" required maxlength="100">
+      </div>
+
+      <div>
+        <label for="email">Email:</label>
+        <input id="email" type="email" name="email" required>
+      </div>
+
+      <div>
+        <label for="senha">Senha:</label>
+        <input id="senha" type="password" name="senha" required minlength="8">
+      </div>
+
+      <div>
+        <label for="numero">Número:</label>
+        <input id="numero" type="number" name="numero" min="1" max="100" step="0.5">
+      </div>
+
+      <div>
+        <label for="data">Data:</label>
+        <input id="data" type="date" name="data" required>
+      </div>
+
+      <div>
+        <label for="telefone">Telefone:</label>
+        <input id="telefone" type="tel" name="telefone">
+      </div>
+
+      <div>
+        <label for="arquivo">Arquivo:</label>
+        <input id="arquivo" type="file" name="arquivo" accept="image/*">
+      </div>
+
+      <div>
+        <label for="cor">Cor:</label>
+        <input id="cor" type="color" name="cor" value="#ff0000">
+      </div>
+
+      <div>
+        <label for="range">Range:</label>
+        <input id="range" type="range" name="range" min="0" max="100" value="50">
+      </div>
+
+      <!-- Select -->
+      <div>
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+          <option value="">Selecione...</option>
+          <option value="SP">São Paulo</option>
+          <option value="RJ">Rio de Janeiro</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <!-- Fieldset com radio e checkbox -->
+    <fieldset>
+      <legend>Preferências</legend>
+
+      <div>
+        <label>
+          <input type="radio" name="nivel" value="iniciante" required> Iniciante
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="radio" name="nivel" value="intermediario"> Intermediário
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="radio" name="nivel" value="avancado"> Avançado
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <input type="checkbox" name="interesses[]" value="html"> HTML
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" name="interesses[]" value="css"> CSS
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" name="interesses[]" value="js"> JavaScript
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- Textarea -->
+    <div>
+      <label for="comentario">Comentário:</label>
+      <textarea id="comentario" name="comentario" rows="4" maxlength="500"></textarea>
+    </div>
+
+    <!-- Validações HTML5 -->
+    <div>
+      <label for="idade">Idade (entre 18 e 65):</label>
+      <input id="idade" type="number" name="idade" min="18" max="65" required>
+    </div>
+
+    <!-- Botões -->
+    <div>
+      <button type="submit">Enviar</button>
+      <button type="reset">Limpar</button>
+      <button type="button">Botão simples</button>
+    </div>
+  </form>
+
+  <!-- FIM DO DEMO -->
+  <hr>
+  <p><em>Fim da demonstração. Todos os elementos HTML5 foram mostrados em ordem sequencial.</em></p>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Interna</title>
+</head>
+<body>
+  <!-- ===== DIV vs ELEMENTOS SEMÂNTICOS ===== -->
+  <h2>Div vs Elementos Semânticos</h2>
+
+  <h3>Usando &lt;div&gt; (semântica ruim)</h3>
+  <div class="cabecalho">
+    <div class="logo">Logo</div>
+    <div class="menu">
+      <a href="#subsecao">Subseção</a>
+      <a href="#outra-subsecao">Outra Subseção</a>
+    </div>
+  </div>
+  <div class="conteudo">
+    <div class="artigo">
+      <h2>Título do artigo</h2>
+      <p>Conteúdo...</p>
+    </div>
+  </div>
+
+  <h3>Usando elementos semânticos (semântica correta)</h3>
+  <header>
+    <figure class="logo">Logo</figure>
+    <nav aria-label="Menu principal">
+      <a href="#subsecao">Subseção</a>
+      <a href="#outra-subsecao">Outra Subseção</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <header>
+        <h2>Título do artigo</h2>
+      </header>
+
+      <section id="subsecao">
+        <h3>Subseção do artigo</h3>
+        <p>
+          Esta é uma subseção do artigo, demonstrando o uso de &lt;section&gt; para organizar o conteúdo.
+        </p>
+      </section>
+
+      <section id="outra-subsecao">
+        <h3>Outra subseção do artigo</h3>
+        <p>
+          Esta é outra subseção do artigo, mostrando como podemos ter múltiplas seções dentro de um mesmo artigo.
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <aside>
+    <h3>Links relacionados</h3>
+    <ul>
+      <li><a href="https://www.w3schools.com/html/" target="_blank" rel="noopener noreferrer">Link 1</a></li>
+      <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank" rel="noopener noreferrer">Link 2</a></li>
+    </ul>
+  </aside>
+
+  <footer>
+    <p>&copy; 2026 - Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>
