@@ -12,7 +12,7 @@
             padding: 20px;
         }
         .seletor-basico { /* Classe */
-            color: #3498db; 
+            color: var(--primary-color); 
         }
         #seletor-id { /* ID */
             background-color: #f1f1f1; 
@@ -37,7 +37,7 @@
         .box-model-demo {
             width: 200px;
             padding: 20px;
-            border: 10px solid #2c3e50;
+            border: 10px solid var(--dark-bg);
             margin: 30px;
             box-sizing: border-box;
         }
@@ -68,7 +68,7 @@
             justify-content: space-between;
         }
         .flex-item { 
-            background: #2ecc71;
+            background: var(--secondary-color);
             padding: 10px; 
             color: white; 
         }
@@ -80,7 +80,7 @@
             grid-gap: 10px;
         }
         .grid-item { 
-            background: #3498db;
+            background: var(--primary-color);
             color: white; 
             padding: 20px; 
             text-align: center; 
@@ -151,7 +151,7 @@
             background: white; 
             border: 1px solid #ccc;
             box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
-            transition: transform var(0.3s), box-shadow var(0.3s);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
         }
         .card-efeito:hover {
             transform: scale(1.1) rotate(5deg);
@@ -168,6 +168,14 @@
             body { 
                 background-color: #f9f9f9; 
             }
+        }
+
+        /* VARIÁVEIS (Custom Properties) */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-bg: #2c3e50;
+            --transition-speed: 0.3s;
         }
     </style>
 </head>
