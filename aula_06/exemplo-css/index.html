@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mastering CSS - Guia Prático</title>
     <style>
         /* SELETORES E PROPRIEDADES ESSENCIAIS */
@@ -155,6 +156,18 @@
         .card-efeito:hover {
             transform: scale(1.1) rotate(5deg);
             box-shadow: 10px 10px 25px rgba(0,0,0,0.3);
+        }
+        /* MEDIA QUERIES */
+        @media (max-width: 600px) {
+            .grid-container { 
+                grid-template-columns: 1fr; 
+            }
+            .flex-container { 
+                flex-direction: column; 
+            }
+            body { 
+                background-color: #f9f9f9; 
+            }
         }
     </style>
 </head>
