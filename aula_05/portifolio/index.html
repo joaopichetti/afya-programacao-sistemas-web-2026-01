@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio de João Guilherme, Desenvolvedor Web Full-Stack. HTML5, CSS3, JavaScript, React.">
+  <meta name="keywords" content="desenvolvedor web, HTML5, CSS3, JavaScript, React, portfólio">
+  <meta name="author" content="João Guilherme">
+  <title>Portfólio | João Guilherme - Desenvolvedor Web</title>
+</head>
+<body>
+  <!-- HEADER - Cabeçalho do site -->
+  <header role="banner">
+    <div class="container">
+      <figure class="logo">
+        <img src="https://picsum.photos/80?random=1" alt="Foto de perfil de João Guilherme" width="80" height="80">
+        <figcaption>
+          <h1>João Guilherme</h1>
+          <p class="tagline">Desenvolvedor Web Full-Stack</p>
+        </figcaption>
+      </figure>
+      
+      <!-- NAVEGAÇÃO PRINCIPAL -->
+      <nav role="navigation" aria-label="Menu principal">
+        <ul class="nav-menu">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN - Conteúdo principal da página -->
+  <main role="main">
+    <!-- SEÇÃO HERO/INÍCIO -->
+    <section id="inicio" class="hero">
+      <div class="container">
+        <h2>Transformando Ideias em Experiências Digitais</h2>
+        <p class="lead">
+          Desenvolvo aplicações web modernas e acessíveis com HTML5, CSS3, 
+          JavaScript e React. Foco em performance, SEO e experiência do usuário.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
+          <a href="#contato" class="btn btn-secondary">Contratar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO SOBRE -->
+    <section id="sobre" class="sobre">
+      <div class="container">
+        <h2>Sobre Mim</h2>
+        
+        <div class="sobre-grid">
+          <!-- Coluna texto -->
+          <div class="sobre-texto">
+            <p>
+              Desenvolvedor web com 5+ anos de experiência criando soluções 
+              completas do frontend ao backend. Já trabalhei com startups, 
+              agências e empresas tradicionais, sempre buscando código limpo 
+              e arquitetura escalável.
+            </p>
+
+            <ul class="experiencia">
+              <li>50+ projetos entregues</li>
+              <li>100% de satisfação dos clientes</li>
+              <li>Especialista em acessibilidade (WCAG)</li>
+              <li>Performance Web (Core Web Vitals)</li>
+            </ul>
+          </div>
+
+          <!-- Coluna foto -->
+          <figure class="foto-principal">
+            <img 
+              src="https://picsum.photos/400/500?random=2" 
+              alt="Foto profissional de João Guilherme em ambiente de trabalho"
+              width="400" 
+              height="500"
+              loading="lazy"
+            >
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO HABILIDADES -->
+    <section id="habilidades" class="habilidades">
+      <div class="container">
+        <h2>Habilidades e Tecnologias</h2>
+        
+        <div class="habilidades-grid">
+          <!-- Frontend -->
+          <article class="habilidade-card">
+            <h3>Frontend</h3>
+            <ul>
+              <li>HTML5 & CSS3</li>
+              <li>JavaScript ES6+</li>
+              <li>React / Next.js</li>
+              <li>Tailwind CSS</li>
+              <li>Sass/SCSS</li>
+            </ul>
+          </article>
+
+          <!-- Backend -->
+          <article class="habilidade-card">
+            <h3>Backend</h3>
+            <ul>
+              <li>Node.js / Express</li>
+              <li>PostgreSQL</li>
+              <li>MongoDB</li>
+              <li>REST & GraphQL APIs</li>
+              <li>WebSockets</li>
+            </ul>
+          </article>
+
+          <!-- DevOps -->
+          <article class="habilidade-card">
+            <h3>DevOps & Tools</h3>
+            <ul>
+              <li>Git / GitHub</li>
+              <li>Docker</li>
+              <li>Vercel / Netlify</li>
+              <li>AWS (EC2, S3)</li>
+              <li>CI/CD Pipelines</li>
+            </ul>
+          </article>
+
+          <!-- Design -->
+          <article class="habilidade-card">
+            <h3>Design & UX</h3>
+            <ul>
+              <li>UI/UX Design</li>
+              <li>Figma</li>
+              <li>Acessibilidade WCAG</li>
+              <li>SEO Técnico</li>
+              <li>Performance Web</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO PROJETOS -->
+    <section id="projetos" class="projetos">
+      <div class="container">
+        <h2>Projetos em Destaque</h2>
+        
+        <div class="projetos-grid">
+          <!-- Projeto 1 -->
+          <article class="projeto-card">
+            <figure>
+              <img 
+                src="https://picsum.photos/400/300?random=3" 
+                alt="Dashboard administrativo com gráficos de analytics em tempo real"
+                width="400" 
+                height="300"
+                loading="lazy"
+              >
+            </figure>
+            
+            <header>
+              <h3>Dashboard Analytics</h3>
+              <p class="projeto-meta">
+                <time datetime="2025-05">Maio 2025</time> 
+                • React, Node.js, PostgreSQL
+              </p>
+            </header>
+
+            <p>
+              Dashboard completo para análise de dados em tempo real. 
+              Integração com APIs REST e WebSockets para atualizações live.
+            </p>
+
+            <div class="projeto-links">
+              <a href="https://dashboard-analytics.com" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="btn btn-primary">
+                Ver Demo
+              </a>
+              <a href="https://github.com/joaopichetti/dashboard-analytics" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="btn btn-secondary">
+                Código
+              </a>
+            </div>
+          </article>
+
+          <!-- Projeto 2 -->
+          <article class="projeto-card">
+            <figure>
+              <img 
+                src="https://picsum.photos/400/300?random=4" 
+                alt="E-commerce com catálogo de produtos, carrinho e checkout integrado"
+                width="400" 
+                height="300"
+                loading="lazy"
+              >
+            </figure>
+            
+            <header>
+              <h3>E-Commerce Premium</h3>
+              <p class="projeto-meta">
+                <time datetime="2025-02">Fev 2025</time> 
+                • Next.js, Stripe, PostgreSQL
+              </p>
+            </header>
+
+            <p>
+              Plataforma e-commerce completa com checkout seguro (Stripe), 
+              sistema de recomendações e gerenciamento de estoque.
+            </p>
+
+            <div class="projeto-links">
+              <a href="https://ecommerce-premium.com" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="btn btn-primary">
+                Ver Demo
+              </a>
+              <a href="https://github.com/joaopichetti/ecommerce" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="btn btn-secondary">
+                Código
+              </a>
+            </div>
+          </article>
+
+          <!-- Projeto 3 -->
+          <article class="projeto-card">
+            <figure>
+              <img 
+                src="https://picsum.photos/400/300?random=5" 
+                alt="Aplicativo de gerenciamento de tarefas com sincronização em nuvem"
+                width="400" 
+                height="300"
+                loading="lazy"
+              >
+            </figure>
+            
+            <header>
+              <h3>Task Manager Pro</h3>
+              <p class="projeto-meta">
+                <time datetime="2024-12">Dez 2024</time> 
+                • React Native, Firebase, PWA
+              </p>
+            </header>
+
+            <p>
+              App de gerenciamento de tarefas com sincronização em tempo real, 
+              notificações push e modo offline (PWA).
+            </p>
+
+            <div class="projeto-links">
+              <a href="https://taskmanager.pro" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="btn btn-primary">
+                Ver Demo
+              </a>
+              <a href="https://github.com/joaopichetti/taskmanager" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="btn btn-secondary">
+                Código
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO CONTATO -->
+    <section id="contato" class="contato">
+      <div class="container">
+        <h2>Vamos Trabalhar Juntos?</h2>
+        <p class="contato-lead">
+          Interessado em trabalhar comigo? Envie uma mensagem e vamos conversar sobre seu projeto.
+        </p>
+
+        <!-- FORMULÁRIO DE CONTATO -->
+        <form id="form-contato" action="/api/contato" method="POST">
+          <fieldset>
+            <legend>Dados de Contato</legend>
+
+            <div class="form-group">
+              <label for="nome-contato">
+                Nome Completo <span aria-label="obrigatório">*</span>
+              </label>
+              <input 
+                id="nome-contato" 
+                type="text" 
+                name="nome" 
+                required 
+                minlength="3" 
+                maxlength="100"
+                placeholder="Ex: Maria Santos"
+                aria-describedby="nome-help"
+              >
+              <small id="nome-help">Mínimo 3 caracteres</small>
+            </div>
+
+            <div class="form-group">
+              <label for="email-contato">
+                Email <span aria-label="obrigatório">*</span>
+              </label>
+              <input 
+                id="email-contato" 
+                type="email" 
+                name="email" 
+                required 
+                placeholder="seu@email.com"
+                aria-describedby="email-help"
+              >
+              <small id="email-help">Email para resposta</small>
+            </div>
+
+            <div class="form-group">
+              <label for="assunto">
+                Assunto <span aria-label="obrigatório">*</span>
+              </label>
+              <input 
+                id="assunto" 
+                type="text" 
+                name="assunto" 
+                required 
+                maxlength="100"
+                placeholder="Ex: Orçamento para site"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="mensagem">
+                Mensagem <span aria-label="obrigatório">*</span>
+              </label>
+              <textarea 
+                id="mensagem" 
+                name="mensagem" 
+                required 
+                rows="6" 
+                maxlength="1000"
+                placeholder="Descreva seu projeto, necessidades e orçamento..."
+                aria-describedby="msg-help"
+              ></textarea>
+              <small id="msg-help">Máximo 1000 caracteres</small>
+            </div>
+
+            <div class="form-group">
+              <label>
+                <input type="checkbox" name="termos" required>
+                Concordo com os <a href="#termos">Termos de Serviço</a> e <a href="#privacidade">Política de Privacidade</a> <span aria-label="obrigatório">*</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">
+              Enviar Mensagem
+            </button>
+            <button type="reset" class="btn btn-secondary">
+              Limpar Formulário
+            </button>
+          </div>
+        </form>
+
+        <!-- Informações de contato direto -->
+        <div class="contato-direto">
+          <h3>Contato Direto</h3>
+          
+          <div class="contato-items">
+            <div class="contato-item">
+              <strong>Email:</strong>
+              <a href="mailto:joao@guilherme.dev">joao@guilherme.dev</a>
+            </div>
+
+            <div class="contato-item">
+              <strong>Telefone:</strong>
+              <a href="tel:+5511999999999">(11) 99999-9999</a>
+            </div>
+
+            <div class="contato-item">
+              <strong>Horário:</strong>
+              Seg-Sex 9h-18h
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASIDE - Informações complementares -->
+    <aside class="sidebar">
+      <div class="container">
+        <section class="widget redes-sociais">
+          <h3>Me Encontre</h3>
+          <ul>
+            <li>
+              <a href="https://github.com/joaopichetti" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 aria-label="GitHub de João Guilherme">
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/joaogbpichetti/" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 aria-label="LinkedIn de João Guilherme">
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/joaoguilherme" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 aria-label="Twitter de João Guilherme">
+                Twitter
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="widget stats">
+          <h3>Estatísticas</h3>
+          <div class="stats-grid">
+            <div class="stat">
+              <div class="stat-number">5+</div>
+              <div class="stat-label">Anos Experiência</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">50+</div>
+              <div class="stat-label">Projetos</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Satisfação</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </aside>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <section class="footer-section">
+          <h3>João Guilherme</h3>
+          <p>Desenvolvedor Web Full-Stack</p>
+          <p><strong>Disponível para projetos</strong></p>
+        </section>
+
+        <section class="footer-section">
+          <h4>Links Rápidos</h4>
+          <ul>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#termos">Termos</a></li>
+            <li><a href="#privacidade">Privacidade</a></li>
+          </ul>
+        </section>
+
+        <section class="footer-section">
+          <h4>Redes Sociais</h4>
+          <ul>
+            <li><a href="https://github.com/joaopichetti" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/joaogbpichetti/" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://twitter.com/joaoguilherme" rel="noopener noreferrer">Twitter</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 João Guilherme. Todos os direitos reservados.</p>
+        <p>
+          Desenvolvido com <span aria-label="amor">❤️</span> e 
+          <a href="https://github.com/joaopichetti">código aberto</a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
