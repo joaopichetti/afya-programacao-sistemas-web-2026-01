@@ -3,13 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Mastering CSS - Guia Prático</title>
+    <style>
+        /* SELETORES E PROPRIEDADES ESSENCIAIS */
+        body { 
+            font-family: sans-serif; 
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .seletor-basico { /* Classe */
+            color: #3498db; 
+        }
+        #seletor-id { /* ID */
+            background-color: #f1f1f1; 
+        }
+        p[data-tipo="avancado"] { /* Seletor de Atributo */
+            color: darkorange; 
+        }
+        section > p {  /* Combinador descendente direto */
+            font-weight: bold; 
+            font-style: italic; 
+            text-decoration: line-through;
+            text-transform: uppercase;
+        }
+        #seletor-id:hover { /* pseudo-classe */
+            color: #f1f1f1;
+            background-color: #1f1f1f;
+        }
+        p::before { /* antes do conteúdo */
+            content: "→ ";
+        }
+    </style>
 </head>
 <body>
     <header>📌 Menu Sticky - Role para ver o efeito</header>
 
     <section id="seletores">
         <h2>1. Seletores e Propriedades Essenciais</h2>
-        <p>Texto azul via classe.</p>
+        <p class="seletor-basico">Texto azul via classe.</p>
         <p id="seletor-id">Fundo cinza via ID.</p>
         <p data-tipo="avancado">Seletor de atributo (laranja).</p>
     </section>
