@@ -8,9 +8,59 @@
 </head>
 <body>
     <h1>Exemplo de utilização de JavaScript</h1>
-
+    <section class="container">
+        <h2>Calculadora JS</h2>
+        <div class="calc-input-group">
+            <input type="number" id="valor1" placeholder="Valor 1">
+            <select id="operacao">
+                <option value="soma">+</option>
+                <option value="subtracao">-</option>
+                <option value="multiplicacao">*</option>
+                <option value="divisao">/</option>
+                <option value="resto">%</option>
+            </select>
+            <input type="number" id="valor2" placeholder="Valor 2">
+        </div>
+        <button id="btnCalcular" class="btn-principal" 
+                onclick="calcular()">
+            Calcular
+        </button>
+        <div id="resultado-box">
+            <span>Resultado:</span>
+            <strong id="resultado">0</strong>
+        </div>
+    </section>
     <script>
-        console.log('Olá, Mundo! Este é o primeiro projeto JavScript');        
+        console.log('Olá, Mundo! Este é o primeiro projeto JavScript');
+        
+        // --- LÓGICA DA CALCULADORA ---
+        function calcular() {
+            const valor1 = Number(document.getElementById('valor1').value);
+            const valor2 = Number(document.getElementById('valor2').value);
+            const operacao = document.getElementById('operacao').value;
+            const resultado = calcularResultado(valor1, valor2, operacao);
+            
+            const displayResultado = document.getElementById('resultado');
+            displayResultado.textContent = resultado;
+        }
+
+        function calcularResultado(valor1, valor2, operacao) {
+            let resultado = 0;
+            
+            if (operacao === 'soma') {
+                resultado = valor1 + valor2;
+            } else if (operacao === 'subtracao') {
+                resultado = valor1 - valor2;
+            } else if (operacao === 'multiplicacao') {
+                resultado = valor1 * valor2;
+            } else if (operacao === 'divisao') {
+                resultado = valor1 / valor2;
+            } else {
+                resultado = valor1 % valor2;
+            }
+
+            return resultado;
+        }
     </script>
 </body>
 </html>
