@@ -42,6 +42,14 @@
             
             const displayResultado = document.getElementById('resultado');
             displayResultado.textContent = resultado;
+            const boxResultado = document.getElementById('resultado-box');
+            if (typeof resultado === 'string') {
+                boxResultado.classList.add('error');
+                boxResultado.classList.remove('success');
+            } else {
+                boxResultado.classList.add('success');
+                boxResultado.classList.remove('error');
+            }
         }
 
         function calcularResultado(valor1, valor2, operacao) {
@@ -54,9 +62,19 @@
             } else if (operacao === 'multiplicacao') {
                 resultado = valor1 * valor2;
             } else if (operacao === 'divisao') {
-                resultado = valor1 / valor2;
+                if (valor2 === 0) {
+                    resultado = 'Erro: Divisão por 0';
+                } else {
+                    resultado = valor1 / valor2;
+                }
+            } else if (operacao === 'resto') {
+                if (valor2 === 0) {
+                    resultado = 'Erro: Divisão por 0';
+                } else {
+                    resultado = valor1 % valor2;
+                }
             } else {
-                resultado = valor1 % valor2;
+                resultado = 'Operação inválida';
             }
 
             return resultado;
