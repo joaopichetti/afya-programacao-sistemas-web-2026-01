@@ -94,6 +94,32 @@ app.put('/alunos/:id', (req, res) => {
     res.status(200).json(alunos[index]);
 });
 
+app.patch('/alunos/:id', (req, res) => {
+    const id = Number(req.params.id);
+    const index = alunos.findIndex(aluno => aluno.id === id);
+
+    if (index < 0) {
+        // 404 Not Found
+        return res.status(404).json({ erro: "Aluno não encontrado." });
+    }
+
+    const { nome, idade, mensalidade, ativo, linguagens } = req.body;
+    if (!nome && !idade && !mensalidade && !linguagens && ativo === undefined) {
+        // 400 Bad Request
+        return res.status(400).json({ 
+            erro: "Informe algum campo para atualizar"
+        });
+    }
+
+    if (nome) alunos[index].nome = nome;
+    if (idade) alunos[index].idade = idade;
+    if (mensalidade) alunos[index].mensalidade = mensalidade;
+    if (linguagens) alunos[index].linguagens = linguagens;
+    if (ativo !== undefined) alunos[index].ativo = ativo;
+
+    res.status(200).json(alunos[index]);
+});
+
 // Inicialização do Servidor
 app.listen(PORT, () => {
     console.log(`Servidor rodando em: http://localhost:${PORT}`);
