@@ -94,6 +94,7 @@ app.put('/alunos/:id', (req, res) => {
     res.status(200).json(alunos[index]);
 });
 
+// 5. PATCH: Atualiza parcialmente um aluno
 app.patch('/alunos/:id', (req, res) => {
     const id = Number(req.params.id);
     const index = alunos.findIndex(aluno => aluno.id === id);
@@ -118,6 +119,20 @@ app.patch('/alunos/:id', (req, res) => {
     if (ativo !== undefined) alunos[index].ativo = ativo;
 
     res.status(200).json(alunos[index]);
+});
+
+// 6. DELETE: Remove um aluno
+app.delete('/alunos/:id', (req, res) => {
+    const id = Number(req.params.id);
+    const index = alunos.findIndex(aluno => aluno.id === id);
+
+    if (index > 0) {
+        // Remove 1 elemento a partir do índice encontrado
+        alunos.splice(index, 1);
+    }
+
+    // 204 No Content
+    res.status(204).send();
 });
 
 // Inicialização do Servidor
