@@ -68,6 +68,32 @@ app.post('/alunos', (req, res) => {
     res.status(201).json(novoAluno);
 });
 
+// 4. PUT: Substitui integralmente um aluno
+app.put('/alunos/:id', (req, res) => {
+    const id = Number(req.params.id);
+    const index = alunos.findIndex(aluno => aluno.id === id);
+
+    if (index < 0) {
+        // 404 Not Found
+        return res.status(404).json({ erro: "Aluno não encontrado"});
+    }
+
+    const { nome, idade, mensalidade, ativo, linguagens } = req.body;
+    // Validação básica (400 Bad Request)
+    if (!nome || !idade || ativo === undefined) {
+        return res.status(400).json({
+            erro: "Nome, idade, e ativo são campos obrigatórios"
+        });
+    }
+
+    // Substitui todo o objeto, mantendo o ID
+    Object.assign(alunos[index], {
+        nome, idade, mensalidade, ativo, linguagens
+    });
+
+    res.status(200).json(alunos[index]);
+});
+
 // Inicialização do Servidor
 app.listen(PORT, () => {
     console.log(`Servidor rodando em: http://localhost:${PORT}`);
