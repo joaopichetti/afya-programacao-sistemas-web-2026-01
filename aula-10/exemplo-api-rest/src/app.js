@@ -26,6 +26,29 @@ app.get('/', (req, res) => {
 
 // 1. GET: Retorna todos os alunos
 app.get('/alunos', (req, res) => {
+    const { nome, ativo, linguagem } = req.query;
+    if (nome || linguagem || ativo) {
+        const alunosFiltrados = alunos.filter(aluno => {
+            if (nome && typeof nome === 'string' 
+                && !aluno.nome.toLowerCase().includes(nome.toLowerCase())) {
+                return false;
+            }
+            if (ativo && typeof ativo === 'string'
+                && String(aluno.ativo).toLowerCase() !== ativo.toLowerCase()) {
+                return false;
+            }
+            if (linguagem && typeof linguagem === 'string'
+                && (!aluno.linguagens
+                    || !aluno.linguagens.length
+                    || !aluno.linguagens.find(
+                        elemento => elemento.toLowerCase().includes(
+                            linguagem.toLowerCase())))) {
+                return false;
+            }
+            return true;
+        });
+        return res.json(alunosFiltrados);
+    }
     res.json(alunos);
 });
 
