@@ -53,11 +53,10 @@ function App() {
     setIdade(aluno.idade);
     setMensalidade(aluno.mensalidade);
     setAtivo(aluno.ativo);
-    setLinguagensInput(aluno.linguagens);
+    setLinguagensInput(aluno.linguagens.join(', '));
   };
 
-  const removerAluno = (event, id) => {
-    event.stopPropagation();
+  const removerAluno = (id) => {
     const confirm = window.confirm(
       'Tem certeza que deseja remover este aluno?'
     );
@@ -86,12 +85,12 @@ function App() {
       style: 'currency',
       currency: 'BRL',
     }).format(value);
-  }
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('pt-BR');
-  }
+  };
 
   return (
     <div className="app-container">
