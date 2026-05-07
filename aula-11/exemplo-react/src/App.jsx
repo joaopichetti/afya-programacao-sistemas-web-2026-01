@@ -94,137 +94,151 @@ function App() {
   }
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Portal de Alunos</h1>
-      <form onSubmit={salvarAluno}>
-        <div className="form-group">
-          <label htmlFor="nome">Nome Completo *</label>
-          <input 
-            type="text" 
-            id="nome" 
-            value={nome} 
-            onChange={(event) => setNome(event.target.value)} 
-            placeholder="Ex: João da Silva"
-            required
-          />
-        </div>
+    <div className="app-container">
+      <header className="header">
+        <h1>Painel de Alunos</h1>
+        <p>Gestão de alunos matriculados na disciplina de Sistemas Web</p>
+      </header>
 
-        <div className="form-group">
-          <label htmlFor="idade">Idade *</label>
-          <input 
-            type="number" 
-            id="idade" 
-            value={idade} 
-            onChange={(event) => setIdade(event.target.value)} 
-            placeholder="Ex: 25"
-            min="1"
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="mensalidade">Mensalidade (R$)</label>
-          <input 
-            type="number" 
-            id="mensalidade" 
-            value={mensalidade} 
-            onChange={(event) => setMensalidade(event.target.value)} 
-            placeholder="Ex: 500.00"
-            step="0.01"
-            min="0"
-          />
-        </div>
-
-        <div className="form-group full-width">
-          <label htmlFor="linguagens">Linguagens (separadas por vírgula)</label>
-          <input 
-            type="text" 
-            id="linguagens" 
-            value={linguagensInput} 
-            onChange={(event) => setLinguagensInput(event.target.value)} 
-            placeholder="Ex: JavaScript, Python, Java"
-          />
-        </div>
-
-        <div className="form-group checkbox-group">
-          <input 
-            type="checkbox" 
-            id="ativo" 
-            checked={ativo} 
-            onChange={(event) => setAtivo(event.target.checked)} 
-          />
-          <label htmlFor="ativo">Aluno Ativo</label>
-        </div>
-
-        <div className="aluno-form-actions">
-          <button type="submit" className="btn-primary">
-            {alunoEmEdicao ? 'Atualizar Aluno' : 'Cadastrar Aluno'}
-          </button>
-          
-          {alunoEmEdicao && (
-            <button 
-              type="button" 
-              className="btn-secondary" 
-              onClick={cancelarEdicao}
-            >
-              Cancelar Edição
-            </button>
-          )}
-        </div>
-      </form>
-      <div className='list-grid'>
-        {alunos.map((aluno) => (
-          <div className="card aluno-card" key={aluno.id}>
-            <div className="aluno-header">
-              <h3 className="aluno-name">{aluno.nome}</h3>
-              <span className={`badge ${aluno.ativo ? 'ativo' : 'inativo'}`}>
-                {aluno.ativo ? 'Ativo' : 'Inativo'}
-              </span>
-            </div>
-            
-            <div className="aluno-info">
-              <div className="info-row">
-                <span>Idade:</span>
-                <strong>{aluno.idade} anos</strong>
+      <main className="main-content">
+        <section className="form-section">      
+          <div className="card">
+            <h2 className="card-title">{alunoEmEdicao ? 'Editar Aluno' : 'Novo Aluno'}</h2>
+            <form onSubmit={salvarAluno} className="aluno-form">
+              <div className="form-group">
+                <label htmlFor="nome">Nome Completo *</label>
+                <input 
+                  type="text" 
+                  id="nome" 
+                  value={nome} 
+                  onChange={(event) => setNome(event.target.value)} 
+                  placeholder="Ex: João da Silva"
+                  required
+                />
               </div>
-              <div className="info-row">
-                <span>Mensalidade:</span>
-                <strong>{formatCurrency(aluno.mensalidade)}</strong>
-              </div>
-              <div className="info-row">
-                <span>Data de Cadastro:</span>
-                <strong>{formatDate(aluno.dataDeCadastro)}</strong>
-              </div>
-            </div>
 
-            {aluno.linguagens && aluno.linguagens.length > 0 && (
-              <div>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Linguagens:</span>
-                <div className="tags-container">
-                  {aluno.linguagens.map((lang, index) => (
-                    <span key={index} className="tag">{lang}</span>
-                  ))}
+              <div className="form-group">
+                <label htmlFor="idade">Idade *</label>
+                <input 
+                  type="number" 
+                  id="idade" 
+                  value={idade} 
+                  onChange={(event) => setIdade(event.target.value)} 
+                  placeholder="Ex: 25"
+                  min="1"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="mensalidade">Mensalidade (R$)</label>
+                <input 
+                  type="number" 
+                  id="mensalidade" 
+                  value={mensalidade} 
+                  onChange={(event) => setMensalidade(event.target.value)} 
+                  placeholder="Ex: 500.00"
+                  step="0.01"
+                  min="0"
+                />
+              </div>
+
+              <div className="form-group full-width">
+                <label htmlFor="linguagens">Linguagens (separadas por vírgula)</label>
+                <input 
+                  type="text" 
+                  id="linguagens" 
+                  value={linguagensInput} 
+                  onChange={(event) => setLinguagensInput(event.target.value)} 
+                  placeholder="Ex: JavaScript, Python, Java"
+                />
+              </div>
+
+              <div className="form-group checkbox-group">
+                <input 
+                  type="checkbox" 
+                  id="ativo" 
+                  checked={ativo} 
+                  onChange={(event) => setAtivo(event.target.checked)} 
+                />
+                <label htmlFor="ativo">Aluno Ativo</label>
+              </div>
+
+              <div className="aluno-form-actions">
+                <button type="submit" className="btn-primary">
+                  {alunoEmEdicao ? 'Atualizar Aluno' : 'Cadastrar Aluno'}
+                </button>
+                
+                {alunoEmEdicao && (
+                  <button 
+                    type="button" 
+                    className="btn-secondary" 
+                    onClick={cancelarEdicao}
+                  >
+                    Cancelar Edição
+                  </button>
+                )}
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section className="list-section">
+          <div className='list-grid'>
+            {alunos.map((aluno) => (
+              <div className="card aluno-card" key={aluno.id}>
+                <div className="aluno-header">
+                  <h3 className="aluno-name">{aluno.nome}</h3>
+                  <span className={`badge ${aluno.ativo ? 'ativo' : 'inativo'}`}>
+                    {aluno.ativo ? 'Ativo' : 'Inativo'}
+                  </span>
+                </div>
+                
+                <div className="aluno-info">
+                  <div className="info-row">
+                    <span>Idade:</span>
+                    <strong>{aluno.idade} anos</strong>
+                  </div>
+                  <div className="info-row">
+                    <span>Mensalidade:</span>
+                    <strong>{formatCurrency(aluno.mensalidade)}</strong>
+                  </div>
+                  <div className="info-row">
+                    <span>Data de Cadastro:</span>
+                    <strong>{formatDate(aluno.dataDeCadastro)}</strong>
+                  </div>
+                </div>
+
+                {aluno.linguagens && aluno.linguagens.length > 0 && (
+                  <div>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Linguagens:</span>
+                    <div className="tags-container">
+                      {aluno.linguagens.map((lang, index) => (
+                        <span key={index} className="tag">{lang}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="card-actions">
+                  <button 
+                    className="btn-edit btn-sm"
+                    onClick={() => carregarAlunoParaEditar(aluno)}
+                  >
+                    Editar
+                  </button>
+                  <button 
+                    className="btn-danger btn-sm"
+                    onClick={() => removerAluno(aluno.id)}
+                  >
+                    Remover
+                  </button>
                 </div>
               </div>
-            )}
-
-            <div className="card-actions">
-              <button 
-                className="btn-edit btn-sm"
-                onClick={() => carregarAlunoParaEditar(aluno)}
-              >
-                Editar
-              </button>
-              <button 
-                className="btn-danger btn-sm"
-                onClick={() => removerAluno(aluno.id)}
-              >
-                Remover
-              </button>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </section>
+      </main>
     </div>
   );
 }
