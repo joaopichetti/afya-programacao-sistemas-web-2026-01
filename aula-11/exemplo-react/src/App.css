@@ -1,0 +1,7 @@
+ul > li > span {
+  padding-right: 10px;
+}
+
+ul > li:hover {
+  cursor: pointer;
+}
