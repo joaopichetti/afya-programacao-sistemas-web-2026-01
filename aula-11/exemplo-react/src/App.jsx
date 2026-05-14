@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './App.css';
-import AlunoCard from './components/AlunoCard';
+import AlunoList from './componentes/AlunoList';
 
 function App() {
   // Estado para armazenar a lista em memória
@@ -172,16 +172,11 @@ function App() {
         </section>
 
         <section className="list-section">
-          <div className='list-grid'>
-            {alunos.map((aluno) => (
-              <AlunoCard 
-                key={aluno.id}
-                aluno={aluno}
-                callbackRemover={removerAluno}
-                callbackEditar={carregarAlunoParaEditar}
-              />
-            ))}
-          </div>
+          <AlunoList
+            alunos={alunos}
+            callbackRemover={removerAluno}
+            callbackEditar={carregarAlunoParaEditar}
+          />
         </section>
       </main>
     </div>
