@@ -37,6 +37,15 @@ function App() {
     setAlunoEmEdicao(null);
   }
 
+  const alterarStatus = (id) => {
+    setAlunos(alunos.map(aluno => {
+      if (aluno.id === id) {
+        aluno.ativo = !aluno.ativo;
+      }
+      return aluno;
+    }));
+  };
+
   return (
     <div className="app-container">
       <header className="header">
@@ -59,6 +68,7 @@ function App() {
             alunos={alunos}
             callbackRemover={removerAluno}
             callbackEditar={carregarAlunoParaEditar}
+            callbackAlterarStatus={alterarStatus}
           />
         </section>
       </main>

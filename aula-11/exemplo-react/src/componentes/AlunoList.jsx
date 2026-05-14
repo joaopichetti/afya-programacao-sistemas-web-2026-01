@@ -1,6 +1,11 @@
 import AlunoCard from './AlunoCard';
 
-function AlunoList({ alunos, callbackRemover, callbackEditar }) {
+function AlunoList({
+    alunos, 
+    callbackRemover, 
+    callbackEditar,
+    callbackAlterarStatus,
+ }) {
     if (alunos.length === 0) {
         return (
             <div className='empty-state'>
@@ -20,6 +25,7 @@ function AlunoList({ alunos, callbackRemover, callbackEditar }) {
                 aluno={aluno}
                 callbackRemover={callbackRemover}
                 callbackEditar={callbackEditar}
+                callbackAlterarStatus={callbackAlterarStatus}
               />
             ))}
         </div>

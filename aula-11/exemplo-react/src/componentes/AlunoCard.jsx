@@ -1,4 +1,9 @@
-function AlunoCard({ aluno, callbackRemover, callbackEditar }) {
+function AlunoCard({ 
+    aluno, 
+    callbackRemover, 
+    callbackEditar,
+    callbackAlterarStatus,
+}) {
     const formatCurrency = (value) => {
         return new Intl.NumberFormat('pt-BR', {
         style: 'currency',
@@ -15,9 +20,25 @@ function AlunoCard({ aluno, callbackRemover, callbackEditar }) {
         <div className="card aluno-card" key={aluno.id}>
             <div className="aluno-header">
                 <h3 className="aluno-name">{aluno.nome}</h3>
-                <span className={`badge ${aluno.ativo ? 'ativo' : 'inativo'}`}>
-                {aluno.ativo ? 'Ativo' : 'Inativo'}
-                </span>
+                <div className="status-toggle" 
+                    title="Alterna Status (Ativo/Inativo)">
+                    <span style={{ 
+                        fontSize: '0.85rem', 
+                        fontWeight: 500, 
+                        color: aluno.ativo 
+                            ? 'var(--success-color)' 
+                            : 'var(--danger-color)' }}>
+                        {aluno.ativo ? 'Ativo' : 'Inativo'}
+                    </span>
+                    <label className="switch">
+                        <input 
+                            type="checkbox"
+                            checked={aluno.ativo}
+                            onChange={() => callbackAlterarStatus(aluno.id)}
+                        />
+                        <span className="slider round"></span>
+                    </label>
+                </div>
             </div>
             
             <div className="aluno-info">
