@@ -57,7 +57,14 @@ function App() {
       setAlunoEmEdicao(null);
       carregarAlunos();
     } catch (erro) {
-      window.alert(erro.message);
+      if (erro.response && erro.response.status === 400) {
+        const mensagemServidor = erro.response.data?.message
+          || erro.response.data?.erro
+          || (typeof erro.response.data === 'string' ? erro.response.data : null);
+        window.alert(mensagemServidor || 'Erro de validação. Verifique os dados e tente novamente');
+      } else {
+        window.alert('Ocorreu um erro inesperado ao salvar o aluno. Aguarde um momento e tente novamente.');
+      }
     }
   };
 
