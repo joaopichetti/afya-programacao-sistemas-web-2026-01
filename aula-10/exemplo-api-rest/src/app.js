@@ -1,5 +1,6 @@
 // Importar Express
 const express = require('express');
+const cors = require('cors');
 
 // Criar app Express
 const app = express();
@@ -8,6 +9,10 @@ const PORT = 3000;
 
 // Middlewares
 app.use(express.json());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+}));
 
 // Rotas (Endpoints)
 app.get('/', (req, res) => {

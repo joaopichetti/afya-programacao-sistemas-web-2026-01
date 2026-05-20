@@ -5,7 +5,23 @@ function AlunoList({
     callbackRemover, 
     callbackEditar,
     callbackAlterarStatus,
+    carregando,
+    erroAoCarregar
  }) {
+    if (carregando) {
+        return (
+            <div className='empty-state'>Carregando alunos...</div>
+        );
+    }
+
+    if (erroAoCarregar) {
+        return (
+            <div className='empty-state' style={{ color: 'var(--danger-color)' }}>
+                {erroAoCarregar}
+            </div>
+        );
+    }
+
     if (alunos.length === 0) {
         return (
             <div className='empty-state'>

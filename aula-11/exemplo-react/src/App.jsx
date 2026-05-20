@@ -1,26 +1,17 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import './App.css';
 import AlunoList from './componentes/AlunoList';
 import AlunoForm from './componentes/AlunoForm';
 import AlunoFilter from './componentes/AlunoFilter';
+import { obterAlunos, criarAluno, atualizarAluno, atualizarStatusAluno, excluirAluno } from "./services/api";
 
 function App() {
-  // Estado para armazenar a lista em memória
-  const [alunos, setAlunos] = useState(() => {
-    const alunosArmazenados = window.localStorage.getItem('alunos');
-    if (alunosArmazenados) {
-      return JSON.parse(alunosArmazenados);
-    }
-    return [];
-  });
-
-  useEffect(() => {
-    window.localStorage.setItem('alunos', JSON.stringify(alunos));
-  }, [alunos]);
-
+  const [alunos, setAlunos] = useState([]);
   const [alunoEmEdicao, setAlunoEmEdicao] = useState(null);
+  const [carregando, setCarregando] = useState(false);
+  const [erroAoCarregar, setErroAoCarregar] = useState(null);
   const [filtros, setFiltros] = useState(() => {
-    const filtrosArmazenados = window.sessionStorage.getItem('filtros');
+  const filtrosArmazenados = window.sessionStorage.getItem('filtros');
     if (filtrosArmazenados) {
       return JSON.parse(filtrosArmazenados);
     }
@@ -31,54 +22,59 @@ function App() {
     window.sessionStorage.setItem('filtros', JSON.stringify(filtros));
   }, [filtros]);
 
+  const carregarAlunos = useCallback(async () => {
+    setCarregando(true);
+    setErroAoCarregar(null);
+    try {
+      const data = await obterAlunos(filtros);
+      setAlunos(data);
+    } catch (erro) {
+      setErroAoCarregar(erro.message);
+    } finally {
+      setCarregando(false);
+    }
+  }, [filtros]);
+
+  useEffect(() => {
+    carregarAlunos();
+  }, [carregarAlunos]);
+
   const atualizarFiltros = (novosFiltros) => {
     setFiltros(novosFiltros);
   }
-
-  const alunosFiltrados = alunos.filter(aluno => {
-    let nomeCombina = true;
-    let ativoCombina = true;
-    let linguagemCombina = true;
-
-    if (filtros.nome) {
-      nomeCombina = aluno.nome.toLowerCase().includes(filtros.nome.toLowerCase());
-    }
-
-    if (filtros.ativo !== '') {
-      const estaAtivo = filtros.ativo === 'true';
-      ativoCombina = aluno.ativo === estaAtivo;
-    }
-
-    if (filtros.linguagem) {
-      const busca = filtros.linguagem.toLowerCase();
-      linguagemCombina = aluno.linguagens && aluno.linguagens.some(linguagem => linguagem.toLowerCase().includes(busca));
-    }
-
-    return nomeCombina && ativoCombina && linguagemCombina;
-  });
 
   const carregarAlunoParaEditar = (aluno) => {
     setAlunoEmEdicao(aluno);
   };
 
-  const salvarAluno = (alunoParaSalvar) => {
-    if (alunoEmEdicao) {
-      setAlunos(alunos.map(aluno =>
-        aluno.id === alunoParaSalvar.id ? alunoParaSalvar : aluno));
-        setAlunoEmEdicao(null);
-    } else {
-      setAlunos([...alunos, alunoParaSalvar]);
+  const salvarAluno = async (alunoParaSalvar) => {
+    try {
+      if (alunoEmEdicao) {
+        await atualizarAluno(alunoParaSalvar.id, alunoParaSalvar);
+      } else {
+        await criarAluno(alunoParaSalvar);
+      }
+      setAlunoEmEdicao(null);
+      carregarAlunos();
+    } catch (erro) {
+      window.alert(erro.message);
     }
   };
 
-  const removerAluno = (id) => {
+  const removerAluno = async (id) => {
     const confirm = window.confirm(
       'Tem certeza que deseja remover este aluno?'
     );
     if (!confirm) return;
-    setAlunos(alunos.filter(aluno => aluno.id !== id));
-    if (alunoEmEdicao && alunoEmEdicao.id === id) {
-      cancelarEdicao();
+
+    try {
+      await excluirAluno(id);
+      if (alunoEmEdicao && alunoEmEdicao.id === id) {
+        cancelarEdicao();
+      }
+      carregarAlunos();
+    } catch (erro) {
+      window.alert(erro.message);
     }
   };
 
@@ -86,13 +82,16 @@ function App() {
     setAlunoEmEdicao(null);
   }
 
-  const alterarStatus = (id) => {
-    setAlunos(alunos.map(aluno => {
-      if (aluno.id === id) {
-        aluno.ativo = !aluno.ativo;
-      }
-      return aluno;
-    }));
+  const alterarStatus = async (id) => {
+    const aluno = alunos.find(aluno => aluno.id === id);
+    if (!aluno) return;
+
+    try {
+      await atualizarStatusAluno(id, !aluno.ativo);
+      carregarAlunos();
+    } catch (erro) {
+      window.alert(erro.message);
+    }
   };
 
   return (
@@ -119,6 +118,8 @@ function App() {
             callbackRemover={removerAluno}
             callbackEditar={carregarAlunoParaEditar}
             callbackAlterarStatus={alterarStatus}
+            carregando={carregando}
+            erroAoCarregar={erroAoCarregar}
           />
         </section>
       </main>
