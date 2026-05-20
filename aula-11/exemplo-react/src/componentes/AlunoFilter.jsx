@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-function AlunoFilter({ callbackFiltrar }) {
-    const [nome, setNome] = useState('');
-    const [ativo, setAtivo] = useState('');
-    const [linguagem, setLinguagem] = useState('');
+function AlunoFilter({ callbackFiltrar, filtroAtual }) {
+    const [nome, setNome] = useState(filtroAtual.nome || '');
+    const [ativo, setAtivo] = useState(filtroAtual.ativo || '');
+    const [linguagem, setLinguagem] = useState(filtroAtual.linguagem || '');
     
     const filtrar = (event) => {
         event.preventDefault();

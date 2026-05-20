@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './App.css';
 import AlunoList from './componentes/AlunoList';
 import AlunoForm from './componentes/AlunoForm';
@@ -6,9 +6,30 @@ import AlunoFilter from './componentes/AlunoFilter';
 
 function App() {
   // Estado para armazenar a lista em memória
-  const [alunos, setAlunos] = useState([]);
+  const [alunos, setAlunos] = useState(() => {
+    const alunosArmazenados = window.localStorage.getItem('alunos');
+    if (alunosArmazenados) {
+      return JSON.parse(alunosArmazenados);
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem('alunos', JSON.stringify(alunos));
+  }, [alunos]);
+
   const [alunoEmEdicao, setAlunoEmEdicao] = useState(null);
-  const [filtros, setFiltros] = useState({ nome: '', ativo: '', linguagem: '' });
+  const [filtros, setFiltros] = useState(() => {
+    const filtrosArmazenados = window.sessionStorage.getItem('filtros');
+    if (filtrosArmazenados) {
+      return JSON.parse(filtrosArmazenados);
+    }
+    return { nome: '', ativo: '', linguagem: '' };
+  });
+
+  useEffect(() => {
+    window.sessionStorage.setItem('filtros', JSON.stringify(filtros));
+  }, [filtros]);
 
   const atualizarFiltros = (novosFiltros) => {
     setFiltros(novosFiltros);
@@ -92,7 +113,7 @@ function App() {
         </section>
 
         <section className="list-section">
-          <AlunoFilter callbackFiltrar={atualizarFiltros} />
+          <AlunoFilter callbackFiltrar={atualizarFiltros} filtroAtual={filtros} />
           <AlunoList
             alunos={alunosFiltrados}
             callbackRemover={removerAluno}
