@@ -2,11 +2,39 @@ import { useState } from "react";
 import './App.css';
 import AlunoList from './componentes/AlunoList';
 import AlunoForm from './componentes/AlunoForm';
+import AlunoFilter from './componentes/AlunoFilter';
 
 function App() {
   // Estado para armazenar a lista em memória
   const [alunos, setAlunos] = useState([]);
   const [alunoEmEdicao, setAlunoEmEdicao] = useState(null);
+  const [filtros, setFiltros] = useState({ nome: '', ativo: '', linguagem: '' });
+
+  const atualizarFiltros = (novosFiltros) => {
+    setFiltros(novosFiltros);
+  }
+
+  const alunosFiltrados = alunos.filter(aluno => {
+    let nomeCombina = true;
+    let ativoCombina = true;
+    let linguagemCombina = true;
+
+    if (filtros.nome) {
+      nomeCombina = aluno.nome.toLowerCase().includes(filtros.nome.toLowerCase());
+    }
+
+    if (filtros.ativo !== '') {
+      const estaAtivo = filtros.ativo === 'true';
+      ativoCombina = aluno.ativo === estaAtivo;
+    }
+
+    if (filtros.linguagem) {
+      const busca = filtros.linguagem.toLowerCase();
+      linguagemCombina = aluno.linguagens && aluno.linguagens.some(linguagem => linguagem.toLowerCase().includes(busca));
+    }
+
+    return nomeCombina && ativoCombina && linguagemCombina;
+  });
 
   const carregarAlunoParaEditar = (aluno) => {
     setAlunoEmEdicao(aluno);
@@ -64,8 +92,9 @@ function App() {
         </section>
 
         <section className="list-section">
+          <AlunoFilter callbackFiltrar={atualizarFiltros} />
           <AlunoList
-            alunos={alunos}
+            alunos={alunosFiltrados}
             callbackRemover={removerAluno}
             callbackEditar={carregarAlunoParaEditar}
             callbackAlterarStatus={alterarStatus}
