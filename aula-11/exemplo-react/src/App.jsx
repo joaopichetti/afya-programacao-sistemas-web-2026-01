@@ -121,7 +121,7 @@ function App() {
         <section className="list-section">
           <AlunoFilter callbackFiltrar={atualizarFiltros} filtroAtual={filtros} />
           <AlunoList
-            alunos={alunosFiltrados}
+            alunos={alunos}
             callbackRemover={removerAluno}
             callbackEditar={carregarAlunoParaEditar}
             callbackAlterarStatus={alterarStatus}
