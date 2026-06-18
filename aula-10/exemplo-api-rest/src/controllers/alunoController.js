@@ -15,7 +15,7 @@ async function listarAlunos(req, res) {
 async function buscarAlunoPorId(req, res) {
     try {
         const id = Number(req.params.id);
-        const aluno = await aluno.buscarAlunoPorId(id);
+        const aluno = await alunoDAO.buscarPorId(id);
 
         if (!aluno) {
             return res.status(404).json({ erro: "Aluno não encontrado." });
