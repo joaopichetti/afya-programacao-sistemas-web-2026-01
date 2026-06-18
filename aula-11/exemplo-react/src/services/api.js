@@ -41,3 +41,8 @@ export async function atualizarStatusAluno(id, ativo) {
 export async function excluirAluno(id) {
     await api.delete(`/alunos/${id}`);
 }
+
+export async function obterAluno(id) {
+    const response = await api.get(`/alunos/${id}`);
+    return response.data;
+}

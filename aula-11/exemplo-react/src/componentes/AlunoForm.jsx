@@ -113,15 +113,13 @@ function AlunoForm({ alunoEmEdicao, callbackSalvar, callbackCancelar }) {
               </div>
 
               <div className="aluno-form-actions">
-                {alunoEmEdicao && (
-                  <button 
-                    type="button" 
-                    className="btn-secondary" 
-                    onClick={callbackCancelar}
-                  >
-                    Cancelar Edição
-                  </button>
-                )}
+                <button
+                  type="button"
+                  className="btn-secondary"
+                  onClick={callbackCancelar}
+                >
+                  {alunoEmEdicao ? 'Cancelar Edição' : 'Descartar'}
+                </button>
 
                 <button type="submit" className="btn-primary">
                   {alunoEmEdicao ? 'Atualizar Aluno' : 'Cadastrar Aluno'}

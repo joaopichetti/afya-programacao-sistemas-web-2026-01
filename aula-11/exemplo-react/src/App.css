@@ -305,3 +305,8 @@ input:checked + .slider:before {
   align-items: center;
   gap: 0.5rem;
 }
+
+.btn-novo-aluno {
+  width: auto;
+  margin-bottom: 1.5rem;
+}
